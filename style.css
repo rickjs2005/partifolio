@@ -1,0 +1,999 @@
+/* Importa as fontes Open Sans, Oswald e Poppins do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald:wght@700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Define algumas propriedades universais para todos os elementos da página */
+* {
+    margin: 0; /* Remove as margens padrão do elemento */
+    padding: 0; /* Remove o preenchimento padrão do elemento */
+    font-family: 'popins', sans-serif; /* Define a fonte padrão do texto para Poppins e, se essa não estiver disponível, qualquer fonte sans-serif */
+    box-sizing: border-box; /* Define o modelo de caixa para incluir a largura e a altura do elemento em sua largura e altura totais */
+    outline: none; /* Remove a borda de foco padrão do elemento */
+    text-decoration: none; /* Remove qualquer decoração de texto padrão do elemento */
+    border: none; /* Remove a borda padrão do elemento */
+    scroll-behavior: smooth; /* Define o comportamento de rolagem suave para a página */
+}
+
+/* Define algumas variáveis de cores usando CSS custom properties */
+:root {
+    --bg-blue:#4896a8; /* Define uma cor azul */
+    --bg-black:#1e1821; /* Define uma cor preta */
+    --bg-orange:#ec723a; /* Define uma cor laranja */
+    --bg-marrom:#7b3a38; /* Define uma cor marrom */
+    --bg-cinza:#d4d3c5; /* Define uma cor cinza */
+    --bg-sb: #102f4a;
+}
+
+/* Define o tamanho padrão da fonte e oculta a barra de rolagem horizontal */
+html {
+    font-size: 62.5%; /* Define o tamanho da fonte em 62,5% do tamanho padrão */
+    overflow-x: hidden; /* Oculta a barra de rolagem horizontal */
+}
+
+/* Define o estilo padrão para o corpo da página */
+body {
+    background: var(--bg-black); /* Define a cor de fundo do corpo usando a variável de cor */
+    color: var(--bg-cinza); /* Define a cor do texto do corpo usando a variável de cor */
+}
+
+/* Define o estilo do cabeçalho da página */
+.header {
+    position: fixed; /* Define o cabeçalho como uma posição fixa na página */
+    top: 0; /* Define o topo do cabeçalho como alinhado ao topo da página */
+    left:0; /* Define a margem esquerda do cabeçalho como alinhada com a margem esquerda da página */
+    width: 100%; /* Define a largura do cabeçalho como 100% da largura da página */
+    background: transparent;
+    padding: 2rem 9%; /* Define o preenchimento do cabeçalho */
+    display: flex; /* Define o cabeçalho como um flex-container para permitir o alinhamento flexível dos elementos filhos */
+    justify-content: space-between; /* Alinha os elementos filhos do cabeçalho nos extremos opostos do cabeçalho */
+    align-items: center; /* Alinha verticalmente os elementos filhos do cabeçalho ao centro do cabeçalho */
+    z-index: 100; /* Define a ordem de empilhamento do cabeçalho em relação a outros elementos na página */
+    transition: .3s;
+}
+.header.sticky {
+    background: var(--bg-black);
+}
+
+.logo img{
+    position: relative;
+    display: inline-block;
+    margin: -30px; /* Define a margem negativa para remover o espaço extra em torno da imagem */
+}
+
+.navbar {
+    position: relative;
+}
+.navbar a{
+    font-size: 1.7rem; /* Define o tamanho da fonte para 1,7rem */
+    color: var(--bg-blue); /* Define a cor do texto para a variável de cor --bg-blue */
+    font-weight: 500; /* Define o peso da fonte para 500 */
+    margin-left: 3.5rem; /* Define a margem esquerda como 3,5rem */
+    transition: .3s; /* Define a transição para animação de 0,3 segundos */
+}
+.navbar a:hover, /* Define as propriedades para quando o mouse estiver sobre o link */
+.navbar a.active{ /* Define as propriedades para quando o link estiver ativo */
+    color: var(--bg-orange); /* Define a cor do texto para a variável de cor --bg-orange */
+}
+#menu-icon {
+    position:  relative;
+    color: var(--bg-blue); /* Define a cor do ícone para a variável de cor --bg-blue */
+    font-size: 3.6rem; /* Define o tamanho da fonte do ícone como 3,6rem */
+    cursor: pointer; /* Define o cursor do mouse como ponteiro */
+    display: none; /* Esconde o ícone inicialmente */
+}
+/*estilação geral section*/
+/* Define a altura mínima da seção como 100% da altura da viewport, e adiciona um preenchimento ao topo e ao fundo com uma margem à esquerda e direita de 9%. */
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem ;
+}
+
+/*aqui começa estilação do home*/
+/* Cria um display flex para centralizar verticalmente os elementos dentro da classe "home". Adiciona um preenchimento à esquerda e à direita com uma margem de 9%. */
+.home {
+    display: flex;
+    align-items: center;
+    padding: 0 9%;
+}
+/* Este código define os estilos para imagens usadas em um perfil */
+
+/* Esta regra define os estilos para imagens dentro de elementos com a classe "img-perfil" */
+.img-perfil img {
+    float: right; /* Flutuar a imagem para a direita */
+    width: 80%; /* Definir a largura da imagem como 80% do seu contêiner */
+    height: 50%; /* Definir a altura da imagem como 50% do seu contêiner */
+    margin-top: 100px; /* Adicionar uma margem superior de 100px para a imagem */
+    margin-right: 40px; /* Adicionar uma margem direita de 40px para a imagem */
+}
+
+/* Esta regra define os estilos para elementos com a classe "home-imgHover" */
+.home-imgHover {
+    position: absolute; /* Definir a posição do elemento como absoluta */
+    top: 0; /* Definir a posição superior do elemento como 0 */
+    right: 0; /* Definir a posição direita do elemento como 0 */
+    width: 45%; /* Definir a largura do elemento como 45% do seu contêiner */
+    height: 100%; /* Definir a altura do elemento como 100% do seu contêiner */
+    background: transparent; /* Definir a cor de fundo do elemento como transparente */
+    transition: ease all .9s; /* Adicionar um efeito de transição para todas as propriedades com uma função de tempo ease e duração de 0,9s */
+}
+
+/* Esta regra define os estilos para elementos com a classe "home-imgHover" quando são passados o mouse por cima */
+.home-imgHover:hover {
+    background-image: url('assets/image/Captura\ de\ Tela\ \(9\).png'); /* Definir a imagem de fundo do elemento como 'assets/image/Captura de Tela (9).png' */
+    opacity: .3; /* Definir a opacidade do elemento como 0,4 */
+}
+
+
+/* Define a largura máxima do conteúdo da página inicial como 60rem. */
+.home-content {
+    max-width: 60rem;
+    z-index: 99;
+}
+
+/* Define o estilo para o título principal na página inicial, incluindo o tamanho da fonte, peso da fonte e espaçamento de linha. */
+.home-content h1 {
+    position: relative;
+    display: inline-block;
+    font-size: 5.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Cria um efeito de texto transparente com borda em torno do subtítulo da página inicial. */
+.home-content .text-animate {
+    position: relative;
+    width: 32.8rem;
+}
+/* Define o estilo do título de terceiro nível dentro de "text-animate" e "home-content" */
+.home-content .text-animate h3 {
+    /* Define o tamanho da fonte, peso, cor e traçado do texto */
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: .7px var(--bg-blue); /* Adiciona um traçado com cor de fundo */
+    /* Define um gradiente de cor de fundo e posicionamento */
+    background-image: linear-gradient(var(--bg-blue ), var(--bg-blue));
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-position: 0 0;
+    
+}
+.home.show-animate .home-content .text-animate h3 {
+    /* Adiciona uma animação de fundo para o texto */
+    animation: homeBGText 6s linear infinite;
+    animation-delay: 2s;
+}
+
+/* Define o estilo do pseudo-elemento "::before" que adiciona a borda vertical animada */
+.home-content .text-animate h3::before {
+    /* Define a posição do elemento e a largura e estilo da borda */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    border-right: 2px solid var(--bg-blue);
+    z-index: -1;
+}
+.home.show-animate .home-content .text-animate h3::before {
+     /* Adiciona uma animação à borda */
+     animation: homeCursorText 6s linear infinite;
+     animation-delay: 2s;
+}
+
+/* Define o estilo para o parágrafo da página inicial, incluindo o tamanho da fonte e a margem inferior. */
+.home-content p {
+    position: relative;
+    font-size: 1.6rem;
+    margin: 2rem 0 4rem;
+}
+
+/* Define o estilo do contêiner que contém os botões, incluindo a posição relativa, display flex com espaçamento uniforme entre os itens, largura fixa e altura fixa. */
+.btn-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 34.5rem;
+    height: 5rem;
+}
+
+/* Define o estilo dos botões, incluindo a posição relativa, display inline-flex, largura fixa, altura fixa, cor de fundo, borda sólida, borda arredondada, tamanho de fonte, peso da fonte, espaçamento de letras, cor do texto, índice z, overflow oculto e transição. */
+.btn-box .btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    height: 100%;
+    background: var(--bg-blue);
+    border: .2rem solid var(--bg-blue);
+    border-radius: .8rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    color: var(--bg-black);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+/* Define o estilo do botão quando o cursor passa por cima, incluindo a cor do texto. */
+.btn-box .btn:hover {
+  color: var(--bg-blue);
+}
+
+/* Define o estilo do segundo botão, incluindo a cor de fundo transparente e a cor do texto. */
+.btn-box .btn:nth-child(2) {
+    background: transparent;
+    color: var(--bg-blue);
+}
+
+/* Define o estilo do segundo botão quando o cursor passa por cima, incluindo a cor do texto. */
+.btn-box .btn:nth-child(2):hover {
+    color: var(--bg-black);
+}
+
+/* Define o estilo do pseudo-elemento "before" do segundo botão, incluindo a cor do texto. */
+.btn-box .btn:nth-child(2)::before {
+    background: var(--bg-blue);
+}
+
+/* Define o estilo do pseudo-elemento "before" dos botões, incluindo a posição absoluta, a largura inicial de 0 e a altura igual a 100% da altura do elemento pai, 
+cor de fundo, índice z, e transição. */
+.btn-box .btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: var(--bg-black);
+    z-index: -1;
+    transition: .5s;
+}
+
+/* Define o estilo do pseudo-elemento "before" dos botões quando o cursor passa por cima, incluindo a largura de 100% e a transição. */
+.btn-box .btn:hover::before {
+    width: 100%;
+}
+/* Define a classe .home-sci */
+.home-sci {
+    /* Define a posição absoluta do elemento com relação ao seu elemento pai */
+    position: absolute;
+    /* Define a distância do elemento ao fundo da página */
+    bottom: 4rem;
+    /* Define a largura do elemento */
+    width: 200px;
+    /* Define o tipo de exibição do elemento */
+    display: flex;
+}
+
+/* Define a aparência dos links dentro do elemento .home-sci */
+.home-sci a {
+    /* Define a margem ao redor do elemento */
+    margin: 3px;
+    /* Define a posição do elemento com relação ao seu elemento pai */
+    position: relative;
+    /* Define a exibição do elemento como uma caixa flexível em linha */
+    display: inline-flex;
+    /* Define a distribuição dos itens dentro do elemento */
+    justify-content: center;
+    align-items: center;
+    /* Define a largura e a altura do elemento */
+    width: 40px;
+    height: 40px;
+    /* Define o fundo transparente do elemento */
+    background: transparent;
+    /* Define o raio da borda do elemento */
+    border-radius: 50%;
+    /* Define a largura e a cor da borda do elemento */
+    border: .2rem solid var(--bg-blue);
+    /* Define o tamanho da fonte dentro do elemento */
+    font-size: 20px;
+    /* Define a cor do texto dentro do elemento */
+    color: var(--bg-blue);
+    /* Define a posição do elemento em relação aos outros elementos */
+    z-index: 1;
+    /* Define o comportamento do conteúdo do elemento quando excede o espaço disponível */
+    overflow: hidden;
+    /* Define a duração da transição do elemento */
+    transition: .5s;
+}
+
+/* Define a aparência dos links quando o cursor passa por cima */
+.home-sci a:hover {
+    /* Define a cor do texto quando o cursor passa por cima */
+    color: var(--bg-black);
+}
+
+/* Define o fundo do elemento quando o cursor passa por cima */
+.home-sci a::before {
+    /* Adiciona um conteúdo vazio antes do elemento */
+    content: '';
+    /* Define a posição absoluta do elemento em relação ao seu elemento pai */
+    position: absolute;
+    /* Define a posição superior do elemento em relação ao elemento pai */
+    top: 0;
+    /* Define a posição esquerda do elemento em relação ao elemento pai */
+    left: 0;
+    /* Define a largura inicial do elemento */
+    width: 0;
+    /* Define a altura do elemento */
+    height: 100%;
+    /* Define o fundo do elemento */
+    background: var(--bg-blue);
+    /* Define a posição do elemento em relação aos outros elementos */
+    z-index: -1;
+    /* Define a duração da transição do elemento */
+    transition: .5s;
+}
+
+/* Define o tamanho do fundo quando o cursor passa por cima */
+.home-sci a:hover:before {
+    width: 100%;
+}
+
+/* aqui estilação do about*/
+/* Define as propriedades CSS para a seção "Sobre nós" */
+.about {
+    display: flex; /* Define o elemento principal como um flex container */
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    flex-direction: column; /* Define a direção do flex container como coluna */
+    gap: 2rem; /* Adiciona um espaço de 2 rem entre os elementos filhos */
+    background: var(--bg-sb); /* Define a cor de fundo da seção */
+    padding-bottom: 6rem; /* Adiciona um preenchimento de 6 rem abaixo do último elemento */
+}
+
+/* Define a cor do texto dentro dos elementos <span> como laranja */
+span {
+    color: var(--bg-orange);
+}
+
+/* Define as propriedades CSS para o título principal da seção "Sobre nós" */
+.heading {
+    position: relative;
+    display: inline-block;
+    font-size: 5rem; /* Define o tamanho da fonte */
+    margin-bottom: 3rem; /* Adiciona uma margem inferior de 3 rem */
+    align-items: center; /* Centraliza os elementos verticalmente */
+}
+
+/* Define as propriedades CSS para a imagem de perfil do usuário na seção "Sobre nós" */
+.about-img {
+    position: relative; /* Define a posição como relativa */
+    width: 25rem; /* Define a largura da imagem */
+    height: 25rem; /* Define a altura da imagem */
+    border-radius: 50%; /* Define o raio de borda para criar um círculo */
+    display: flex; /* Define o elemento como um flex container */
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+    align-items: center; /* Centraliza os elementos verticalmente */
+}
+
+/* Define as propriedades CSS para a imagem dentro do elemento .about-img */
+.about-img img {
+    width: 80%; /* Define a largura da imagem */
+    border-radius: 50%; /* Define o raio de borda para criar um círculo */
+    border: .2rem solid var(--bg-orange); /* Adiciona uma borda de 0,2 rem com cor de fundo laranja */
+}
+
+/* Define as propriedades CSS para a animação de rotação em torno do círculo */
+.about-img .circle-spin {
+    position: absolute; /* Define a posição como absoluta */
+    top: 50%; /* Define a posição vertical como 50% */
+    left: 50%; /* Define a posição horizontal como 50% */
+    transform: translate(-50%, -50%) rotate(0); /* Centraliza o elemento horizontalmente e verticalmente */
+    width: 100%; /* Define a largura do elemento como 100% */
+    height: 100%; /* Define a altura do elemento como 100% */
+    border-radius: 50%; /* Define o raio de borda para criar um círculo */
+    border-top: .2rem solid var(--bg-sb); /* Adiciona uma borda superior com a cor de fundo marrom */
+    border-bottom: .2rem solid var(--bg-sb); /* Adiciona uma borda inferior com a cor de fundo marrom */
+    border-left: .2rem solid var(--bg-orange); /* Adiciona uma borda esquerda com a cor de fundo laranja */
+    border-right: .2rem solid var(--bg-orange); /* Adiciona uma borda direita com a cor de fundo laranja*/
+    animation: aboutSpinner 8s linear infinite;
+}
+/* Define as propriedades CSS para o conteúdo da seção "Sobre nós" */
+.about-content {
+    text-align: center; /* Centraliza o texto horizontalmente */
+}
+
+/* Define as propriedades CSS para o subtítulo da seção "Sobre nós" */
+.about-content h3 {
+    position: relative;
+    display: inline-block;
+    font-size: 3.6rem; /* Define o tamanho da fonte */
+}
+
+/* Define as propriedades CSS para o parágrafo de texto da seção "Sobre nós" */
+.about-content p {
+    position: relative;
+    font-size: 1.6rem; /* Define o tamanho da fonte */
+    margin: 2rem 0 3rem; /* Adiciona margens superior e inferior de 2 e 3 rem, respectivamente */
+}
+
+/* Define as propriedades CSS para a caixa de botões na seção "Sobre nós" */
+.btn-box.btns {
+    display: inline-block; /* Define a exibição como inline-block */
+    width: 15rem; /* Define a largura da caixa de botões */
+}
+
+/* Define as propriedades CSS para o pseudo-elemento ::before nos links dentro da caixa de botões */
+.btn-box.btns a::before{
+    background: var(--bg-sb); /* Define a cor de fundo para o pseudo-elemento como a cor de fundo marrom */
+}
+
+/*aqui começa estilação de education*/
+
+/* Define um container flexível para a seção de educação, centralizando o conteúdo e estabelecendo uma altura mínima e espaço abaixo */
+.education {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: auto;
+    padding-bottom: 5rem;
+}
+    
+/* Define uma linha flexível para organizar os elementos da seção de educação em colunas, com um espaço entre elas */
+.education-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+    
+/* Define uma coluna flexível para a seção de educação, com um tamanho flexível de 40rem */
+.education-row .education-column {
+    flex: 1 1 40rem;
+}
+    
+/* Define o estilo para o título da coluna, com um tamanho de fonte grande e uma margem específica */
+.education-column .title{
+    position: relative;
+    display: inline-block;
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 2rem;
+}
+    
+/* Define o estilo para a borda da caixa de educação, estabelecendo uma borda à esquerda de 0,2rem de largura em cor de fundo azul */
+.education-column .education-box {
+    position: relative;
+    border-left: .2rem solid var(--bg-blue);
+}
+    
+/* Define o estilo para o conteúdo de educação, estabelecendo um posicionamento relativo e um preenchimento à esquerda */
+.education-box .education-content {
+    position: relative;
+    padding-left: 2rem;
+}
+    
+/* Define o estilo para o ponto da caixa de educação, estabelecendo um círculo à esquerda da caixa em cor de fundo azul */
+.education-box .education-content::before {
+    content: '';
+    position: absolute;
+    left: -1.1rem;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--bg-blue);
+    border-radius: 50%;
+}
+    
+/* Define o estilo para o conteúdo dentro da caixa de educação, estabelecendo um posicionamento relativo e um preenchimento */
+.education-content .content {
+    position: relative;
+    padding: 1.5rem;
+    border: .2rem solid var(--bg-blue);
+    border-radius: .6rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+    
+/* Define o estilo para o fundo do conteúdo de educação, estabelecendo uma transição de 0,5s e cor de fundo */
+.education-content .content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #102f4a;
+    z-index: -1;
+    transition: .5s;
+}
+    
+/* Define o estilo para o fundo do conteúdo de educação quando o mouse está sobre ele, estabelecendo uma largura de 100% do fundo */
+.education-content .content:hover::before {
+    width: 100%;
+}
+    
+/* Define o estilo para o ano dentro do conteúdo de educação, estabelecendo uma cor de fundo azul, um tamanho de fonte grande e um preenchimento na parte inferior */
+.education-content .content .year {
+    font-size: 1.5rem;
+    color: var(--bg-blue);
+    padding-bottom: .5rem;
+}
+.education-content .content .year i {
+    padding-right: .5rem;/* defininir o espaçamento do lado direito*/
+}
+.education-content .content h3 {
+    color: var(--bg-orange);/* defininir a cor da letra*/
+    font-size: 1.8rem;/* defininir o tamanho da letra*/
+}
+.education-content .content p {
+    font-size: 1.4rem;/* defininir o tamanho*/
+    padding-top: .5rem;/* defininir o espaçamento do lado superior*/
+}
+
+/* Define a estilização da seção "skills" */
+.skills {
+    display: flex; /* Define a exibição em forma de flexbox */
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    flex-direction: column; /* Define a orientação dos elementos em colunas */
+    min-height: auto; /* Define a altura mínima da seção como automática */
+    width: 100vw; /* Define a largura da seção como 100% da largura da viewport */
+    padding-bottom: 7rem; /* Adiciona um espaçamento inferior de 7rem */
+    background: var(--bg-sb); /* Define o fundo da seção com a cor "bg-marrom" */
+}
+
+
+/* Define a estilização das linhas de habilidades */
+.skills-row {
+    display: flex; /* Define a exibição em forma de flexbox */
+    flex-wrap: wrap; /* Permite que os elementos quebrem linha conforme necessário */
+    gap: 5rem; /* Define um espaçamento horizontal de 5rem entre os elementos */
+}
+
+/* Define a estilização das colunas de habilidades */
+.skills-row.skills-column {
+    flex: 1 1 40rem; /* Define a largura máxima de cada coluna como 40rem */
+}
+
+/* Define a estilização do título de cada coluna de habilidades */
+.skills-column .title {
+    position: relative;
+    display: inline-block;
+    font-size: 2.5rem; /* Define o tamanho da fonte como 2.5rem */
+    margin: 0 0 1.5rem; /* Adiciona um espaçamento inferior de 1.5rem */
+}
+.skills-column .skills-box {
+    position: relative;
+}
+
+/* Define a estilização do contêiner da caixa de habilidades */
+.skills-box .skills-content {
+    position: relative; /* Define a posição como relativa */
+    border: .2rem solid var(--bg-orange); /* Adiciona uma borda sólida de 0,2rem com a cor "bg-orange" */
+    border-radius: .6rem; /* Adiciona um raio de borda de 0,6rem */
+    padding: .5rem 1.5rem; /* Adiciona preenchimento interno de .5rem no topo e na base e 1.5rem nos lados */
+    z-index: 1; /* Define a ordem de empilhamento do elemento */
+    overflow: hidden; /* Esconde qualquer conteúdo que saia do limite do contêiner */
+}
+/* Define a estilização do pseudo-elemento "before" do contêiner da caixa de habilidades */
+.skills-box .skills-content::before {
+    content: ''; /* Define o conteúdo do pseudo-elemento como vazio */
+    position: absolute; /* Define a posição como absoluta */
+    left: 0; /* Define a posição horizontal do elemento */
+    top: 0; /* Define a posição vertical do elemento */
+    height: 100%; /* Define a altura do elemento como 100% do elemento pai */
+    width: 0; /* Define a largura inicial do elemento como 0 */
+    background: var(--bg-marrom); /* Define o fundo do elemento com a cor "bg-black" */
+    z-index: -1; /* Define a ordem de empilhamento do elemento */
+    transition: .5s; /* Adiciona uma transição de 0,5 segundos */
+}
+
+/* Define a animação do pseudo-elemento "before" do contêiner da caixa de habilidades ao passar o mouse */
+.skills-box .skills-content:hover::before {
+    width: 100%; /* Define a largura do elemento como 100% do elemento pai ao passar o mouse */
+}
+
+/* Define a estilização da barra de progresso das habilidades */
+.skills-content .progress {
+    padding: 1rem 0; /* Adiciona preenchimento interno de 1rem no topo e na base e 0 nos lados */
+}
+
+/* Define a estilização do título da barra de progresso das habilidades */
+.skills-content .progress h3 {
+    font-size: 1.7rem; /* Define o tamanho da fonte como 1.7rem */
+    display: flex; /* Define a exibição como flexbox */
+    justify-content: space-between; /* Distribui o espaço igualmente entre os itens flexíveis */
+}
+
+/* Define a estilização da porcentagem da barra de progresso das habilidades */
+.skills-content .progress h3 span {
+    color: var(--bg-cinza); /* Define a cor do texto como "bg-cinza" */
+}
+
+.skills-content .progress .bar {
+    height: 2.5rem; /* Define a altura da barra de progresso */
+    border-radius: .6rem; /* Adiciona um raio de borda à barra de progresso */
+    border: .2rem solid var(--bg-orange); /* Adiciona uma borda sólida à barra de progresso com a cor "bg-orange" */
+    padding: .5rem; /* Adiciona um preenchimento interno à barra de progresso */
+    margin: 1rem o; /* Adiciona uma margem superior e inferior de 1rem e uma margem esquerda e direita automática à barra de progresso */
+}
+.skills-content .progress .bar span {
+    display: block; /* Define o elemento como bloco */
+    height: 100%; /* Define a altura do elemento como 100% */
+    border-radius: .1rem; /* Adiciona um raio de borda ao elemento */
+    background-color: var(--bg-orange); /* Define a cor de fundo do elemento como "bg-orange" */
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(1) .bar span {
+    width: 100%; /* Define a largura do elemento como 100% na primeira barra de progresso da primeira coluna */
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(2) .bar span {
+    width: 100%; /* Define a largura do elemento como 100% na segunda barra de progresso da primeira coluna */
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span {
+    width: 60%; /* Define a largura do elemento como 60% na terceira barra de progresso da primeira coluna */
+}
+
+.skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span {
+    width: 25%; /* Define a largura do elemento como 25% na quarta barra de progresso da primeira coluna */
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span {
+    width: 15%; /* Define a largura do elemento como 15% na primeira barra de progresso da segunda coluna */
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span {
+    width: 60%; /* Define a largura do elemento como 60% na segunda barra de progresso da segunda coluna */
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span {
+    width: 75%; /* Define a largura do elemento como 75% na terceira barra de progresso da segunda coluna */
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
+    width: 45%; /* Define a largura do elemento como 45% na quarta barra de progresso da segunda coluna */
+}
+
+/* Define a altura mínima do elemento "contact" como "auto" para evitar que o elemento tenha uma altura menor do que o conteúdo dentro dele */
+.contact {
+    min-height: auto;
+    padding-bottom: 7rem; /*Adicione uma margem inferior para que haja espaço suficiente abaixo do formulário */
+}
+.contact h2 {
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Centralize o formulário e defina a largura máxima como 70rem */
+.contact form {
+    max-width: 70rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Crie um layout flexível para a caixa de entrada de formulário e defina o posicionamento relativo */
+.contact form .input-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Defina o posicionamento relativo para o campo de entrada e defina a largura como 49% para criar duas colunas na caixa de entrada */
+.contact form .input-box .input-field {
+    position: relative;
+    width: 49%;
+    margin: .8rem 0;
+}
+
+/* Defina o estilo da caixa de entrada do formulário, como cor de fundo, borda, tamanho de fonte, cor da fonte etc. */
+.contact form .input-box .input-field input,
+.contact form .textarea-field textarea {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--bg-blue);
+    background: transparent;
+    border-radius: .6rem;
+    border: .2rem solid var(--bg-blue);
+}
+
+/* Defina o estilo do placeholder da caixa de texto do formulário como a cor de fundo para a cor de fundo azul definida na variável CSS "--bg-blue" */
+.contact form .textarea-field textarea::placeholder {
+    color: var(--bg-blue);
+}
+.contact form .focus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #102f4a;
+    border-radius: .6rem;
+    z-index: -1;
+    transition: .5s;
+}  /* Define um elemento de foco para inputs e textarea */
+    
+.contact form .input-box .input-field input:focus~.focus,
+.contact form .input-box .input-field input:valid~.focus,
+.contact form .textarea-field textarea:focus~.focus,
+.contact form .textarea-field textarea:valid~.focus {
+    width: 100%;
+} /* Quando um input ou textarea recebe o foco ou contém um valor válido,
+o elemento de foco se expande para preencher a largura do elemento pai */
+    
+.contact form .textarea-field {
+    position: relative;
+    margin: .8rem 0 2.7rem;
+    display: flex;
+}/* Define o estilo do container do textarea */
+.contact form .textarea-field textarea {
+    resize: none;
+} /* Impede o redimensionamento do textarea pelo usuário */
+    
+.contact form .btn-box.btns .btn {
+    cursor: pointer;
+}/* Define o cursor como ponteiro para indicar que o botão é clicável */
+
+/* Estilo para o rodapé */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background: var(--bg-sb);
+}    
+
+.footer-text,
+.footer-iconTop {
+    position: relative;
+}
+/* Estilo para o texto no rodapé */
+.footer-text p {
+    font-size: 1.6rem;
+}    
+/* Estilo para o ícone superior no rodapé */
+.footer-iconTop a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    background: var(--bg-blue);
+    border: .2rem solid var(--bg-blue);
+    border-radius: .6rem;
+    z-index: 1;
+    overflow: hidden;
+}    
+/* Estilo para o elemento antes do ícone superior no rodapé */
+.footer-iconTop a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: #102f4a;
+    z-index: -1;
+    transition: .5s;
+}    
+/* Estilo para o elemento antes do ícone superior no rodapé quando o mouse estiver sobre ele */
+.footer-iconTop a:hover::before {
+    width: 100%;
+}    
+/* Estilo para o ícone dentro do ícone superior no rodapé */
+.footer-iconTop a i {
+    font-size: 1.4rem;
+    color: #102f4a;    
+}    
+/* Estilo para o ícone dentro do ícone superior no rodapé quando o mouse estiver sobre ele */    
+.footer-iconTop a i:hover {    
+    color: var(--bg-blue);
+}
+
+.animate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-black);
+    z-index: 98;
+}
+.animate.home-img {
+    width: 100%;
+}
+.logo .animate,
+.navbar .animate,
+#menu-icon .animate,
+.home.show-animate .animate {
+    animation: showRight 1s ease forwards;
+    animation-delay: calc(.3s* var(--i));
+}
+
+.animate.scroll {
+    transition: 1s ease;
+    transition-delay: calc(.3s/var(--i));
+}
+section:nth-child(odd) .animate.scroll,
+.footer .animate.scroll {
+    background: var(--bg-sb);
+}
+.education .education-box .animate.scroll {
+    width: 105%;
+}
+.about.show-animate .animate.scroll,
+.education.show-animate .animate.scroll,
+.skills.show-animate .animate.scroll,
+.contact.show-animate .animate.scroll,
+.footer.show-animate .animate.scroll {
+    transition-delay: calc(.3s * var(--i));
+    width: 0;
+}
+
+@media (max-width:1145px ) {
+    .home-imgHover {
+        pointer-events: none;
+        opacity: .3;
+    }
+}
+@media (max-width:768px) {
+    .header {
+        background: var(--bg-black);
+    }
+    #menu-icon {
+        display: block;
+    }
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        padding: 1rem 4%;
+        background: var(--bg-blue);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+        z-index: 1;
+        transition: .25s ease;
+        transition-delay: .25s;
+    }
+    .navbar.active {
+        left: 0;
+        transition-delay: 0s;
+    }
+    .navbar .active-nav {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-black);
+        border-radius: .1rem solid rgba(0, 0, 0, .2) ;
+        z-index: -1;
+        transition: .25s ease;
+        transition-delay: 0;
+    }
+    .navbar.active .active-nav {
+        left: 0;
+        transition-delay: .25s;
+    }
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        transform: translateX(-20rem);
+        transition: .25s ease;
+        transition-delay: 0s;
+    }
+    .navbar.active a {
+        transform: translateX(0);
+        transition-delay: .25s;
+    }
+    .home-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .home-imgHover {
+        width: 200px;
+        pointer-events: none;
+        opacity: .3;
+    }
+    
+    .home-imgHover img {
+        width: 100%;
+    }  
+}
+@media (max-width:520px) {
+    html {
+        font: 50%;
+    }
+    .home-content h1 {
+        display: flex;
+        flex-direction: column;
+    }
+    .home-sci {
+        width:160px;
+    }
+    .home-sci a {
+        width: 38px;
+        height: 38px;
+    }
+}
+@media (max-width:462px) {
+    .home-content h1 {
+        font-size: 5.2rem;
+    }
+    .education {
+        padding: 10rem 4% 5rem 5%;
+    }
+    .contact form .input-box .input-field {
+        width: 100%;
+    }
+    .footer {
+        flex-direction: column-reverse;
+    }
+    .footer p {
+        margin-top: 2rem;
+        text-align: center;
+    }
+} 
+@media (max-width:371px) {
+    .home {
+        justify-content: center;
+    }
+    .home-content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    .home-content h1 {
+        font-size: 5rem;
+    }
+}
+
+@keyframes homeBGText {
+    0%,
+    10%,
+    100% {
+        background-position: -33rem 0;
+    }
+    65%,
+    85% {
+        background-position: 0 0;
+    }
+}
+@keyframes homeCursorText {
+    0%,
+    10%,
+    100% {
+        width: 0;
+    }
+    65%,
+    78%,
+    85% {
+        width: 93%;
+        opacity: 1;
+    }
+    75%,
+    81% {
+        opacity: 0;
+    }
+}
+
+@keyframes aboutSpinner {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+@keyframes showRight {
+    100% {
+        width: 0;
+    }
+}
+
+    
+    
+    
+    
+    
